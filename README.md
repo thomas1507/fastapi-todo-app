@@ -32,10 +32,10 @@ A comprehensive guide covering essential Python concepts and FastAPI best practi
 - Elements can be added, removed, or modified
 - **Use when**: You need a collection that changes frequently
 
-\`\`\`python
+```python
 my_list = [1, 2, 3, "hello"]
 my_list.append(4)  # Modifiable
-\`\`\`
+```
 
 #### Tuple
 - **Immutable**, ordered collection of items  
@@ -44,10 +44,10 @@ my_list.append(4)  # Modifiable
 - **Use when**: You need data integrity and the collection shouldn't change
 - **Performance**: Faster than lists for iteration
 
-\`\`\`python
+```python
 my_tuple = (1, 2, 3, "hello")
 # my_tuple[0] = 5  # This would raise an error
-\`\`\`
+```
 
 #### Dictionary
 - **Mutable**, unordered collection of key-value pairs
@@ -55,17 +55,17 @@ my_tuple = (1, 2, 3, "hello")
 - **Fast lookups** by key
 - **Use when**: You need to store and retrieve data by unique keys
 
-\`\`\`python
+```python
 my_dict = {"name": "John", "age": 30, "city": "New York"}
 my_dict["age"] = 31  # Modifiable
-\`\`\`
+```
 
 ### 2. Decorators
 
 Functions that modify the behavior of other functions without permanently changing them. They're essentially function wrappers that add functionality.
 
 **FastAPI Route Example:**
-\`\`\`python
+```python
 from fastapi import FastAPI
 import time
 
@@ -86,7 +86,7 @@ async def read_item(item_id: int):
     # Simulate some processing
     await asyncio.sleep(1)
     return {"item_id": item_id, "name": f"Item {item_id}"}
-\`\`\`
+```
 
 ### 3. Async Programming
 
@@ -102,7 +102,7 @@ When you use `async def` in Python:
 - Scales well with many simultaneous users
 - Non-blocking operations improve overall throughput
 
-\`\`\`python
+```python
 import asyncio
 
 async def fetch_data():
@@ -114,7 +114,7 @@ async def fetch_data():
 async def get_data():
     result = await fetch_data()
     return result
-\`\`\`
+```
 
 ### 4. Copy Operations: deep vs shallow copy
 
@@ -128,7 +128,7 @@ async def get_data():
 - Changes to nested objects **don't affect** the original
 - Created using `copy.deepcopy()`
 
-\`\`\`python
+```python
 import copy
 
 original = [[1, 2], [3, 4]]
@@ -142,7 +142,7 @@ print(original)  # [[99, 2], [3, 4]] - original affected!
 deep = copy.deepcopy(original)
 deep[0][0] = 100
 print(original)  # [[99, 2], [3, 4]] - original unchanged
-\`\`\`
+```
 
 ### 5. Virtual Environments
 
@@ -155,7 +155,7 @@ A virtual environment is an **isolated Python environment** that allows you to m
 - Avoids polluting the system-wide Python installation
 
 **Usage:**
-\`\`\`bash
+```bash
 # Create virtual environment
 python -m venv myproject_env
 
@@ -170,7 +170,7 @@ pip install fastapi uvicorn
 
 # Deactivate when done
 deactivate
-\`\`\`
+```
 
 ---
 
@@ -185,7 +185,7 @@ Pydantic models are used for:
 - **Type hints** enforcement
 
 **Simple Example:**
-\`\`\`python
+```python
 from pydantic import BaseModel, EmailStr, conint
 from typing import Optional
 
@@ -204,7 +204,7 @@ class User(BaseModel):
                 "bio": "Software developer"
             }
         }
-\`\`\`
+```
 
 ### 2. POST Routes
 
@@ -247,7 +247,7 @@ HTTP status codes are standardized codes that indicate the result of an HTTP req
 | `404 Not Found` | Not Found | Resource doesn't exist |
 
 **Examples:**
-\`\`\`python
+```python
 # 200 OK - Successful GET request
 return {"user": user_data}
 
@@ -259,14 +259,14 @@ raise HTTPException(status_code=400, detail="Invalid input data")
 
 # 404 Not Found - Resource not found
 raise HTTPException(status_code=404, detail="User not found")
-\`\`\`
+```
 
 ### Dependency Injection
 
 Dependency Injection is a pattern where dependencies are provided to functions rather than created within them, making code more testable and modular.
 
 **FastAPI Example:**
-\`\`\`python
+```python
 from fastapi import FastAPI, Depends, Header, HTTPException
 
 app = FastAPI()
@@ -299,7 +299,7 @@ async def get_protected_data(
         "user": current_user,
         "database": db
     }
-\`\`\`
+```
 
 ### CORS Configuration
 
@@ -312,7 +312,7 @@ CORS (Cross-Origin Resource Sharing) is a security mechanism that allows or rest
 - Required for mobile apps and third-party integrations
 
 **FastAPI CORS Setup:**
-\`\`\`python
+```python
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -330,7 +330,7 @@ app.add_middleware(
 @app.get("/")
 async def main():
     return {"message": "Hello World"}
-\`\`\`
+```
 
 ---
 
@@ -346,7 +346,7 @@ A lightweight, high-performance, in-memory task manager API built with Python, F
 #### Installation & Setup
 
 1. **Clone and setup environment:**
-\`\`\`bash
+```bash
 git clone https://github.com/Thomas1507/fastapi-todo-app.git
 cd fastapi-todo-app
 
@@ -356,12 +356,12 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 # Install dependencies
 pip install fastapi uvicorn pydantic
-\`\`\`
+```
 
 2. **Run the application:**
-\`\`\`bash
+```bash
 uvicorn main:app --reload --port 8000
-\`\`\`
+```
 
 3. **Access the API documentation:**
    - **Interactive Docs:** http://127.0.0.1:8000/docs
@@ -370,11 +370,11 @@ uvicorn main:app --reload --port 8000
 ### API Endpoints
 
 #### 1. Get All Tasks
-\`\`\`bash
+```bash
 curl -X GET "http://127.0.0.1:8000/tasks"
-\`\`\`
+```
 **Response:**
-\`\`\`json
+```json
 [
   {
     "id": 1,
@@ -383,86 +383,64 @@ curl -X GET "http://127.0.0.1:8000/tasks"
     "completed": false
   }
 ]
-\`\`\`
+```
 
 #### 2. Create a New Task
-\`\`\`bash
+```bash
 curl -X POST "http://127.0.0.1:8000/tasks" \\
   -H "Content-Type: application/json" \\
   -d '{"title": "Learn FastAPI", "description": "Read the official documentation"}'
-\`\`\`
+```
 **Response (201 Created):**
-\`\`\`json
+```json
 {
   "id": 2,
   "title": "Learn FastAPI",
   "description": "Read the official documentation",
   "completed": false
 }
-\`\`\`
+```
 
 #### 3. Get a Single Task
-\`\`\`bash
+```bash
 curl -X GET "http://127.0.0.1:8000/tasks/1"
-\`\`\`
+```
 **Response:**
-\`\`\`json
+```json
 {
   "id": 1,
   "title": "Buy groceries",
   "description": "Milk, bread, and eggs",
   "completed": false
 }
-\`\`\`
+```
 
 #### 4. Update a Task
-\`\`\`bash
+```bash
 curl -X PUT "http://127.0.0.1:8000/tasks/1" \\
   -H "Content-Type: application/json" \\
   -d '{"completed": true}'
-\`\`\`
+```
 **Response:**
-\`\`\`json
+```json
 {
   "id": 1,
   "title": "Buy groceries",
   "description": "Milk, bread, and eggs",
   "completed": true
 }
-\`\`\`
+```
 
 #### 5. Delete a Task
-\`\`\`bash
+```bash
 curl -X DELETE "http://127.0.0.1:8000/tasks/1"
-\`\`\`
+```
 **Response:** `204 No Content`
 
 ### Technology Stack
 
-- **Backend Framework**: FastAPI - Modern, fast web framework for building APIs
+- **Backend Framework**: FastAPI
 - **Data Validation**: Pydantic - Data validation using Python type annotations
-- **ASGI Server**: Uvicorn - Lightning-fast ASGI server
+- **ASGI Server**: Uvicorn - ASGI server
 - **Storage**: In-memory Python list for simplicity
 
-### Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (\`git checkout -b feature/amazing-feature\`)
-3. Commit your changes (\`git commit -m 'Add some amazing feature'\`)
-4. Push to the branch (\`git push origin feature/amazing-feature\`)
-5. Open a Pull Request
-
-### License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-### Acknowledgments
-
-- Inspired by the official FastAPI tutorial
-- Thanks to the open-source community for their invaluable tools and resources 🌟
-
----
-
-**Happy Coding!** 🎉
