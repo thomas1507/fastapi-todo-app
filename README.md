@@ -22,9 +22,9 @@ A comprehensive guide covering essential Python concepts and FastAPI best practi
 
 ---
 
-## Python Fundamentals
+## Section 1: Python Fundamentals
 
-### Collections
+### 1. Collections
 
 #### List
 - **Mutable**, ordered collection of items
@@ -60,7 +60,7 @@ my_dict = {"name": "John", "age": 30, "city": "New York"}
 my_dict["age"] = 31  # Modifiable
 \`\`\`
 
-### Decorators
+### 2. Decorators
 
 Functions that modify the behavior of other functions without permanently changing them. They're essentially function wrappers that add functionality.
 
@@ -88,7 +88,7 @@ async def read_item(item_id: int):
     return {"item_id": item_id, "name": f"Item {item_id}"}
 \`\`\`
 
-### Async Programming
+### 3. Async Programming
 
 When you use `async def` in Python:
 - The function becomes a **coroutine** that can be paused and resumed
@@ -116,7 +116,7 @@ async def get_data():
     return result
 \`\`\`
 
-### Copy Operations
+### 4. Copy Operations: deep vs shallow copy
 
 #### Shallow Copy
 - Creates a new object but **references the same nested objects**
@@ -144,7 +144,7 @@ deep[0][0] = 100
 print(original)  # [[99, 2], [3, 4]] - original unchanged
 \`\`\`
 
-### Virtual Environments
+### 5. Virtual Environments
 
 A virtual environment is an **isolated Python environment** that allows you to manage dependencies for different projects separately.
 
@@ -174,9 +174,9 @@ deactivate
 
 ---
 
-## FastAPI & REST API Design
+## Section 2: FastAPI & REST API Design
 
-### Pydantic Models
+### 1. Pydantic Models
 
 Pydantic models are used for:
 - **Data validation** and parsing
@@ -206,9 +206,9 @@ class User(BaseModel):
         }
 \`\`\`
 
-### POST Routes
+### 2. POST Routes
 
-\`\`\`python
+```python
 from fastapi import FastAPI, status
 from pydantic import BaseModel
 
@@ -231,9 +231,9 @@ async def create_user(user: UserCreate):
         message="User data received successfully",
         received_data=user
     )
-\`\`\`
+```
 
-### HTTP Status Codes
+### 3. HTTP Status Codes
 
 HTTP status codes are standardized codes that indicate the result of an HTTP request.
 
