@@ -3,19 +3,19 @@
 A comprehensive guide covering essential Python concepts and FastAPI best practices, complete with a fully functional To-Do List API implementation.
 
 ## Table of Contents
-- [Python Fundamentals](#python-fundamentals)
-  - [Collections](#collections)
-  - [Decorators](#decorators)
-  - [Async Programming](#async-programming)
-  - [Copy Operations](#copy-operations)
-  - [Virtual Environments](#virtual-environments)
-- [FastAPI & REST API Design](#fastapi--rest-api-design)
-  - [Pydantic Models](#pydantic-models)
-  - [POST Routes](#post-routes)
-  - [HTTP Status Codes](#http-status-codes)
-  - [Dependency Injection](#dependency-injection)
-  - [CORS Configuration](#cors-configuration)
-- [To-Do List API](#fastapi-todo-list-api)
+- [Section 1: Python Fundamentals](#section-1-python-fundamentals)
+  - [1. Collections](#1-collections)
+  - [2. Decorators](#2-decorators)
+  - [3. Async Programming](#3-async-programming)
+  - [4. Copy Operations: deep vs shallow copy](#4-copy-operations-deep-vs-shallow-copy)
+  - [5. Virtual Environments](#5-virtual-environments)
+- [Section 2: FastAPI & REST API Design](#section-2-fastapi--rest-api-design)
+  - [1. Pydantic Models](#1-pydantic-models)
+  - [2. POST Routes](#2-post-routes)
+  - [3. HTTP Status Codes](#3-http-status-codes)
+  - [4. Dependency Injection](#4-dependency-injection)
+  - [5. CORS Configuration](#5-cors-configuration)
+- [FastAPI To-Do List API](#fastapi-to-do-list-api)
   - [Quick Start](#quick-start)
   - [API Endpoints](#api-endpoints)
   - [Technology Stack](#technology-stack)
@@ -261,7 +261,7 @@ raise HTTPException(status_code=400, detail="Invalid input data")
 raise HTTPException(status_code=404, detail="User not found")
 ```
 
-### Dependency Injection
+### 4. Dependency Injection
 
 Dependency Injection is a pattern where dependencies are provided to functions rather than created within them, making code more testable and modular.
 
@@ -301,7 +301,7 @@ async def get_protected_data(
     }
 ```
 
-### CORS Configuration
+### 5. CORS Configuration
 
 CORS (Cross-Origin Resource Sharing) is a security mechanism that allows or restricts resources on a web page to be requested from another domain.
 
