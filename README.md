@@ -321,7 +321,7 @@ app = FastAPI()
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://frontend-app.com", "http://localhost:3000"],
+    allow_origins=["https://watermelon.ai", "http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],  # Or specify: ["GET", "POST", "PUT", "DELETE"]
     allow_headers=["*"],  # Or specify specific headers
@@ -372,6 +372,8 @@ uvicorn main:app --reload --port 8000
 #### 1. Get All Tasks
 ```bash
 curl -X GET "http://127.0.0.1:8000/tasks"
+# for powershell: 
+curl.exe -X GET "http://127.0.0.1:8000/tasks" -H "accept: application/json"
 ```
 **Response:**
 ```json
@@ -390,6 +392,9 @@ curl -X GET "http://127.0.0.1:8000/tasks"
 curl -X POST "http://127.0.0.1:8000/tasks" \\
   -H "Content-Type: application/json" \\
   -d '{"title": "Learn FastAPI", "description": "Read the official documentation"}'
+
+    # or for terminal
+  curl.exe -X POST http://127.0.0.1:8000/tasks -H "accept: application/json" -H "Content-Type: application/json" -d "{\`"title\`":\`"task\`",\`"description\`":\`"eggs\`",\`"completed\`":false}" 
 ```
 **Response (201 Created):**
 ```json
@@ -404,6 +409,8 @@ curl -X POST "http://127.0.0.1:8000/tasks" \\
 #### 3. Get a Single Task
 ```bash
 curl -X GET "http://127.0.0.1:8000/tasks/1"
+# Example that works in terminal
+curl.exe -X GET http://127.0.0.1:8000/tasks -H "accept: application/json"
 ```
 **Response:**
 ```json
@@ -420,6 +427,11 @@ curl -X GET "http://127.0.0.1:8000/tasks/1"
 curl -X PUT "http://127.0.0.1:8000/tasks/1" \\
   -H "Content-Type: application/json" \\
   -d '{"completed": true}'
+
+# terminal: 
+curl.exe -X PUT http://127.0.0.1:8000/tasks/1 -H "accept: application/json" -H "Content-Type: application/json" -d "{\`"completed\`":true}"
+# or multiple fields
+curl.exe -X PUT http://127.0.0.1:8000/tasks/1 -H "accept: application/json" -H "Content-Type: application/json" -d "{\`"title\`":\`"Updated task\`",\`"description\`":\`"Updated description\`",\`"completed\`":true}"
 ```
 **Response:**
 ```json
@@ -434,6 +446,8 @@ curl -X PUT "http://127.0.0.1:8000/tasks/1" \\
 #### 5. Delete a Task
 ```bash
 curl -X DELETE "http://127.0.0.1:8000/tasks/1"
+# or for terminal: 
+curl.exe -X DELETE http://127.0.0.1:8000/tasks/1 -H "accept: application/json"
 ```
 **Response:** `204 No Content`
 
@@ -443,4 +457,9 @@ curl -X DELETE "http://127.0.0.1:8000/tasks/1"
 - **Data Validation**: Pydantic - Data validation using Python type annotations
 - **ASGI Server**: Uvicorn - ASGI server
 - **Storage**: In-memory Python list for simplicity
+
+
+
+
+
 
